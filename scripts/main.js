@@ -27,7 +27,11 @@ function initLanding() {
         trailColor: null,
         fill: "#FFF9F0"
     });
+    setInterval(function() { initStatus(); }, 5000);
+}
 
+function initStatus() {
+{
     $.ajax({
         type : "GET",
         url : "http://terraz.ru/online/status2.php?callback=?",
