@@ -10,6 +10,25 @@ function onLoad() {
     initExamples();
     initStar();
 }
+function initOnline(circle) {
+    jQuery.ajax({
+        type : "GET",
+        url : "http://terraz.ru/online/status2.php?callback=?",
+        dataType: "jsonp",
+        success: function(data) {
+                    if (data.offline==1)
+                    {
+                        circle.animate(0);
+                    } else {
+                        $('#online').text(data.playercount + '/' + data.maxplayers);
+                        circle.animate(data.playercount/data.maxplayers, {
+                            duration: 1200,
+                            easing: 'easeInOut'
+                        });
+                    }
+                 },
+    });
+}
 
 function initExternalLibs() {
     smoothScroll.init({
@@ -27,28 +46,8 @@ function initLanding() {
         trailColor: null,
         fill: "#FFF9F0"
     });
-    setInterval(function() { initStatus(); }, 5000);
-}
 
-function initStatus() {
-{
-    $.ajax({
-        type : "GET",
-        url : "http://terraz.ru/online/status2.php?callback=?",
-        dataType: "jsonp",
-        success: function(data) {
-                    if (data.offline==1)
-                    {
-                        circle.animate(0);
-                    } else {
-                        $('#online').text(data.playercount + '/' + data.maxplayers);
-                        circle.animate(data.playercount/data.maxplayers, {
-                            duration: 1200,
-                            easing: 'easeInOut'
-                        });
-                    }
-                 },
-    });
+    initOnline(circle);
 }
 
 function initExamples() {
