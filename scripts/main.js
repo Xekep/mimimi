@@ -18,7 +18,8 @@ function initOnline(circle) {
         success: function(data) {
                     if (data.offline==1)
                     {
-                        circle.animate(0);
+                        $('#status').text("Offline");
+                        circle.animate(1);
                     } else {
                         $('#online').text(data.playercount + '/' + data.maxplayers);
                         circle.animate(data.playercount/data.maxplayers, {
