@@ -13,7 +13,7 @@ function onLoad() {
 function initOnline(circle) {
     jQuery.ajax({
         type : "GET",
-        url : "http://s.anyworld.terraz.ru/status",
+        url : "http://s.anyworld.terraz.ru:7878/status",
         dataType: "jsonp",
         success: function(data) {
                     if (data.offline==1)
