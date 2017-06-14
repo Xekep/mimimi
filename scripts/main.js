@@ -13,7 +13,7 @@ function onLoad() {
 function initOnline(circle) {
     jQuery.ajax({
         type : "GET",
-        url : "http://sc.terraz.ru/online/status2.php?callback=?",
+        url : "http://s.anyworld.terraz.ru/status",
         dataType: "jsonp",
         success: function(data) {
                     if (data.offline==1)
